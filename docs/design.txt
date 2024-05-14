@@ -1,0 +1,127 @@
+PROBLEM STATEMENT:
+You are tasked with creating a text-based cooking adventure game where the user can explore and view a food inventory and recieve dishes from the ingredients expolored. 
+NOUNS:
+  Inventory
+  Ingredients
+  Dishes
+  
+VERBS:
+  Explore
+  View
+  Receive
+  
+DEFINING DIAGRAM:
+
+ INPUTS:
+  User selects option
+  
+ PROCESSING:
+  Prompt user to select an option
+  loop if option is explore
+  if option is view show inventory 
+    else if inventory is empty show alert to explore
+  if option is cook use ingredient in inventory to 'cook' dishes
+  show alert what the user cooked
+  alert what ingredient was used
+  alert show inventory
+    else if no ingredients to cook alert user that they need to explore for ingredients
+  if option is exit end loop
+    END
+
+ OUTPUT:
+  alerts/messages 
+  
+SOLUTION ALGORITHM:
+
+Define function getRandomIngredient() to randomly select an ingredient from the array
+Define function exploreAndCollect() to simulate user exploring and collecting ingredients:
+    call getRandomIngredient() to get random ingredient
+    Add the randomly selected ingredient to the inventory
+    Display message/alert indicating the ingredient found
+Define Function viewInventory() to display the contents of users inventory:
+    if empty, display alert indicating the user's inventory is empty and they need to explore
+    else display each item in the inventory
+Define function cookDish() to simulate the user cooking a dish:
+  Check if inventory is empty
+    if empty, display alert indicating the user's inventory is empty, there's not enough to cook, and they need to 
+  Select a random ingredient from inventory
+  determine the dish based on the selected ingredient
+  display message/alert indicating the dish cooked and the ingredient used
+  Remove ingredient from the inventory
+  Call viewInventory() to display the updated inventory
+Initialize an empty inventory array to store collected ingredients
+Start a game loop:
+  Display a prompt asking the player which action they would like to take (explore, cook, view, exit)
+  Convert the users input to lowercase
+  based on user input
+    if 'explore' 
+      call exploreAndCollect()
+    if cook
+      call cookDish()
+    if view 
+      call viewInventory()
+    if exit
+      break and display a thank you message/alert
+    if an invalid action is chosen display an error message/alert
+End the game loop
+
+TESTING:
+TEST 1
+  INPUT:
+  explore
+  EXPECTED RESULT:
+    "You found ____!"
+  ACTUAL RESULT:
+    "You found Rice!"
+TEST 2 (using previously found ingredient)
+    INPUT:
+    cook
+    EXPECTED RESULT:
+      "You cooked Rice Bowl using rice!"
+      "You used rice for cooking"
+      viewInventory
+    ACTUAL RESULT:
+      You cooked Rice Bowl using Rice!
+      You used Rice for cooking!
+      Your inventory is empty! Explore to collect ingredients.
+TEST 3 (try to cook without ingredients)
+    INPUT
+    cook
+    EXPECTED RESULT:
+      "Your inventory is empty! Explore to collect ingredients."
+    ACTUAL RESULT:
+      Your inventory is empty! Explore to collect ingredients.
+TEST 4
+    INPUT:
+    explore
+    explore
+    explore
+    cook
+    exit
+    
+   EXPECTED RESULT:
+    "You found ___!"
+    "You found ___!"
+    "You found ___!"
+    "You cooked ___ using ____"
+    "You used ____ for cooking."
+    (Inventory)
+    "-____
+     -____"
+     "Thanks for playing!"
+     
+   ACTUAL RESULTS:
+    You found Tomato!
+    You found Chicken!
+    You found Rice!
+    You cooked Grilled Chicken using Chicken!
+    You used Chicken for cooking!
+    Inventory:
+- Tomato
+- Rice
+Thanks for playing!
+
+
+  Any resources I used to help figure out how to code this assignment:
+  https://www.geeksforgeeks.org/getting-random-elements-from-arraylist-in-java/ 
+  https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays
